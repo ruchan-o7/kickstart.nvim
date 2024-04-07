@@ -303,6 +303,12 @@ require('lazy').setup({
     config = true,
   },
   {
+    'sontungexpt/stcursorword',
+    event = 'VeryLazy',
+    config = true,
+  },
+
+  {
     'p00f/clangd_extensions.nvim',
     lazy = true,
     config = function() end,

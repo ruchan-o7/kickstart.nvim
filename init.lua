@@ -396,6 +396,7 @@ require('lazy').setup({
         --   },
         -- },
         pickers = {
+          -- defaults = { layout_config = { horizontal = { preview_cutoff = 0 } } },
           colorscheme = {
             enable_preview = true,
           },
@@ -807,7 +808,27 @@ require('lazy').setup({
       }
     end,
   },
-
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  },
+  {
+    'FrenzyExists/aquarium-vim',
+    name = 'aquarium-vim',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  },
+  {
+    'sainnhe/sonokai',
+    name = 'sonokai',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  },
+  { 'edluffy/hologram.nvim' },
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is
@@ -818,7 +839,7 @@ require('lazy').setup({
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
       -- Load the colorscheme here
-      vim.cmd.colorscheme 'habamax'
+      vim.cmd.colorscheme 'sonokai'
 
       -- You can configure highlights by doing something like
       vim.cmd.hi 'Comment gui=none'

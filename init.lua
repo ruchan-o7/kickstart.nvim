@@ -287,6 +287,10 @@ require('lazy').setup({
   {
     'hrsh7th/cmp-cmdline',
   },
+  {
+    'echasnovski/mini.move',
+    version = '*',
+  },
   -- NOTE: Plugins can specify dependencies.
   --
   -- The dependencies are proper plugin specifications as well - anything
@@ -812,7 +816,7 @@ require('lazy').setup({
   { 'edluffy/hologram.nvim' },
 
   -- Highlight todo, notes, etc in comments
-  { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+  { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
 
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
@@ -836,6 +840,7 @@ require('lazy').setup({
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
       require('mini.statusline').setup()
+      require('mini.move').setup()
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim

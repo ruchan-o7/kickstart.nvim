@@ -291,6 +291,7 @@ require('lazy').setup({
     'echasnovski/mini.move',
     version = '*',
   },
+  { 'echasnovski/mini.pairs', version = '*' },
   -- NOTE: Plugins can specify dependencies.
   --
   -- The dependencies are proper plugin specifications as well - anything
@@ -841,6 +842,7 @@ require('lazy').setup({
       --  and try some other statusline plugin
       require('mini.statusline').setup()
       require('mini.move').setup()
+      require('mini.pairs').setup()
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim

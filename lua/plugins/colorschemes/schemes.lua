@@ -1,16 +1,16 @@
 local colorschemes = {
 
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-  },
-  {
-    'rose-pine/neovim',
-  },
-  {
-    'FrenzyExists/aquarium-vim',
-    name = 'aquarium-vim',
-  },
+  -- {
+  --   'catppuccin/nvim',
+  --   name = 'catppuccin',
+  -- },
+  -- {
+  --   'rose-pine/neovim',
+  -- },
+  -- {
+  --   'FrenzyExists/aquarium-vim',
+  --   name = 'aquarium-vim',
+  -- },
   {
     'sainnhe/sonokai',
     name = 'sonokai',

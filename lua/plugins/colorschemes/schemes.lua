@@ -4,21 +4,21 @@ local colorschemes = {
   --   'catppuccin/nvim',
   --   name = 'catppuccin',
   -- },
-  {
-    'rose-pine/neovim',
-  },
+  -- {
+  --   'rose-pine/neovim',
+  -- },
   {
     'navarasu/onedark.nvim',
   },
-  {
-    'FrenzyExists/aquarium-vim',
-    name = 'aquarium-vim',
-  },
-  {
-    'sainnhe/sonokai',
-    name = 'sonokai',
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-  },
+  -- {
+  --   'FrenzyExists/aquarium-vim',
+  --   name = 'aquarium-vim',
+  -- },
+  -- {
+  --   'sainnhe/sonokai',
+  --   name = 'sonokai',
+  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  -- },
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is

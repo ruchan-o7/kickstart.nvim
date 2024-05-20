@@ -203,6 +203,9 @@ require('lazy').setup({
     'hrsh7th/cmp-cmdline',
   },
   {
+    'tikhomirov/vim-glsl',
+  },
+  {
     'echasnovski/mini.move',
     version = '*',
   },
@@ -778,7 +781,7 @@ require('lazy').setup({
 
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'cpp', 'html', 'lua', 'markdown', 'regex', 'markdown_inline', 'vim', 'vimdoc', 'dart' },
+        ensure_installed = { 'bash', 'c', 'cpp', 'glsl', 'html', 'lua', 'markdown', 'regex', 'markdown_inline', 'vim', 'vimdoc', 'dart' },
         -- Autoinstall languages that are not installed
         auto_install = true,
         highlight = { enable = true },

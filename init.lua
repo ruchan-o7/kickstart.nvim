@@ -3,7 +3,9 @@
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
+vim.g.netrw_banner = 0
+vim.g.netrw_sort_by = 'exten'
+vim.g.netrw_liststyle = 1
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
@@ -781,7 +783,27 @@ require('lazy').setup({
 
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'bash', 'c', 'cpp', 'glsl', 'html', 'lua', 'markdown', 'regex', 'markdown_inline', 'vim', 'vimdoc', 'dart' },
+        ensure_installed = {
+          'bash',
+          'c',
+          'cpp',
+          'c_sharp',
+          'cmake',
+          'make',
+          'yaml',
+          'csv',
+          'doxygen',
+          'json',
+          'glsl',
+          'html',
+          'lua',
+          'markdown',
+          'regex',
+          'markdown_inline',
+          'vim',
+          'vimdoc',
+          'dart',
+        },
         -- Autoinstall languages that are not installed
         auto_install = true,
         highlight = { enable = true },

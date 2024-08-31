@@ -180,6 +180,15 @@ require('lazy').setup({
     'echasnovski/mini.move',
     version = '*',
   },
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+    config = true,
+  },
   -- { 'echasnovski/mini.pairs', version = '*' },
   -- NOTE: Plugins can specify dependencies.
   --
@@ -697,6 +706,7 @@ require('lazy').setup({
           'c',
           'cpp',
           'css',
+          'dart',
           'vue',
           'cmake',
           'make',

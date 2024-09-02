@@ -180,6 +180,10 @@ require('lazy').setup({
     'echasnovski/mini.move',
     version = '*',
   },
+{
+  'r-cha/encourage.nvim',
+  config = true
+},
   {
     'akinsho/flutter-tools.nvim',
     lazy = false,

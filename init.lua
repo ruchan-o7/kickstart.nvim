@@ -96,7 +96,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
@@ -120,6 +119,7 @@ require('lazy').setup({
   --
   --  This is equivalent to:
   --    require('Comment').setup({})
+
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
   { 'mg979/vim-visual-multi', opts = {}, config = function() end },
@@ -180,6 +180,15 @@ require('lazy').setup({
     'echasnovski/mini.move',
     version = '*',
   },
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+    config = true,
+  },
   -- { 'echasnovski/mini.pairs', version = '*' },
   -- NOTE: Plugins can specify dependencies.
   --
@@ -200,7 +209,7 @@ require('lazy').setup({
     opts = {
       inlay_hints = {
         inline = vim.fn.has 'nvim-0.10' == 1,
-        only_current_line = false,
+        only_current_line = true,
         -- Event which triggers a refresh of the inlay hints.
         -- You can make this { "CursorMoved" } or { "CursorMoved,CursorMovedI" } but
         -- note that this may cause higher CPU usage.
@@ -363,19 +372,6 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
-{
-  'r-cha/encourage.nvim',
-  config = true,
-},
- {
-    'akinsho/flutter-tools.nvim',
-    lazy = false,
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'stevearc/dressing.nvim', -- optional for vim.ui.select
-    },
-    config=true
-  },
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -397,10 +393,6 @@ require('lazy').setup({
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
-          require('clangd_extensions.inlay_hints').setup_autocmd()
-          require('clangd_extensions.inlay_hints').set_inlay_hints()
-          vim.g.inlay_hints_visible = true
-
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
@@ -493,10 +485,15 @@ require('lazy').setup({
           cmd = {
             'clangd',
             '--background-index',
+            '-j=12',
             '--clang-tidy',
-            '--header-insertion=iwyu',
+            '--clang-tidy-checks=*',
+            '--all-scopes-completion',
+            '--cross-file-rename',
             '--completion-style=detailed',
             '--function-arg-placeholders',
+            '--header-insertion=iwyu',
+            '--pch-storage=memory',
             '--fallback-style=llvm',
           },
           init_options = {
@@ -542,7 +539,6 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format lua code
-        'pyright'
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -709,6 +705,9 @@ require('lazy').setup({
           'bash',
           'c',
           'cpp',
+          'css',
+          'dart',
+          'vue',
           'cmake',
           'make',
           'yaml',
@@ -732,8 +731,8 @@ require('lazy').setup({
 
       --    - Incremental selection: Included, see :help nvim-treesitter-incremental-selection-mod
       --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-      --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
+    --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
   -- { 'nvim-neotest/nvim-nio' },
   -- require 'kickstart.plugins.debug',

@@ -7,9 +7,7 @@
 -- kickstart.nvim and not kitchen-sink.nvim ;)
 
 return {
-  -- NOTE: Yes, you can install new plugins here!
   'mfussenegger/nvim-dap',
-  -- NOTE: And you can specify dependencies as well
   dependencies = {
     -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
@@ -22,6 +20,8 @@ return {
     'theHamsta/nvim-dap-virtual-text',
     'mfussenegger/nvim-dap-python',
   },
+  event = 'VeryLazy',
+  priority = 1000,
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'

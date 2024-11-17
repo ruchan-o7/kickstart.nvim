@@ -1,5 +1,5 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.g.netrw_banner = 0
 vim.g.netrw_sort_by = 'exten'
 vim.g.netrw_liststyle = 1
@@ -13,7 +13,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = 'yes'
 vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+vim.opt.timeoutlen = 1000
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.list = true
@@ -22,6 +22,8 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 3
 vim.opt.hlsearch = true
+
+vim.cmd.colorscheme 'habamax'
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -34,51 +36,30 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-      
-vim.cmd.colorscheme 'habamax'
 
 vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
+	desc = 'Highlight when yanking (copying) text',
+	group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
 })
 
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-end ---@diagnostic disable-next-line: undefined-field
-vim.opt.rtp:prepend(lazypath)
+vim.filetype.add {
+	extension = {
+		hlsl = 'hlsl',
+		fun = function(_, _, ...)
+			vim.setfiletype = 'hlsl'
+		end,
+	},
+}
+vim.filetype.add {
+	extension = {
+		hlsl = 'glsl',
+		fun = function(_, _, ...)
+			vim.setfiletype = 'glsl'
+		end,
+	},
+}
 
-require('lazy').setup({
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  { 'hrsh7th/cmp-cmdline' },
-  { 'tpope/vim-fugitive' },
-  { 'echasnovski/mini.pairs', version = '*' },
-  {
-    'folke/todo-comments.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = {},
-  },
-
-  { -- Collection of various small independent plugins/modules
-    'echasnovski/mini.nvim',
-    config = function()
-      require('mini.ai').setup { n_lines = 500 }
-      -- require('mini.surround').setup()
-      require('mini.statusline').setup()
-      require('mini.move').setup()
-      require('mini.pairs').setup()
-    end,
-  },
-
-  { 'nvim-neotest/nvim-nio' },
-  require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.indent_line',
-  require 'plugins/colorschemes',
-  require 'plugins/plugins/trouble',
-
-  { import = 'custom.plugins' },
-}, {})
+require('config.lazy')

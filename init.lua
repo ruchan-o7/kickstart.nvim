@@ -25,14 +25,14 @@ vim.opt.hlsearch = true
 
 vim.opt.nu = true
 vim.opt.termguicolors = true
-vim.opt.colorcolumn = '110'
 
 vim.keymap.set('n', 'J', 'mzJ`z')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 
 vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Yank without lose yanked' })
-vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = 'Change word the under cursor' })
+vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = 'Change word the under cursor' })
 
 vim.cmd.colorscheme 'habamax'
 

@@ -6,7 +6,7 @@ local lsps = {
 return {
   'williamboman/mason-lspconfig.nvim',
   dependencies = {
-    { 'j-hui/fidget.nvim', opts = {} },
+    { 'j-hui/fidget.nvim', lazy = true, opts = {} },
   },
   build = 'make install_jsregexp',
   config = function()
@@ -60,7 +60,8 @@ return {
           'meson.build',
           'meson_options.txt',
           'build.ninja'
-        )(fname) or require('lspconfig.util').root_pattern('compile_commands.json', 'compile_flags.txt')(fname) or require('lspconfig.util').find_git_ancestor(
+        )(fname) or require('lspconfig.util').root_pattern('compile_commands.json', 'compile_flags.txt')(fname) or
+        require('lspconfig.util').find_git_ancestor(
           fname
         )
       end,
